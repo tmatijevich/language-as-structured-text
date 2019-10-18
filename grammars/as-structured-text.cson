@@ -2,13 +2,17 @@
 #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 
 'scopeName': 'source.as-structured-text'
-'name': 'AsStructuredText'
+'name': 'AS StructuredText'
 'fileTypes': [
-  'extension'
+  'st', 'var', 'typ', 'fun'
 ]
 'patterns': [
+  # {
+  #   'match': '^\\s*@@.*$'
+  #   'name': 'comment'
+  # }
   {
-    'match': '^\\s*@@.*$'
-    'name': 'comment'
+    'match': '^\\s*(?i)\\bFUNCTION\\b'
+    'name': 'storage.type.as-structured-text'
   }
 ]

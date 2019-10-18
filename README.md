@@ -1,3 +1,3 @@
-# AsStructuredText language package
+# AS StructuredText language package
 
-A short description of your language package.
+Atom support for IEC 61131-3 Structured Text and Automation Studio projects including syntax highlighting, snippets, and auto-completion.
