@@ -1,18 +1,87 @@
 # If this is your first time writing a language grammar, check out:
 #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 
-'scopeName': 'source.as-structured-text'
-'name': 'AS StructuredText'
-'fileTypes': [
-  'st', 'var', 'typ', 'fun'
-]
-'patterns': [
+scopeName: 'source.as-structured-text'
+name: 'AS StructuredText'
+fileTypes: [ 'st', 'var', 'typ', 'fun' ]
+patterns: [
   # {
   #   'match': '^\\s*@@.*$'
   #   'name': 'comment'
   # }
+  # {
+  #   'match': 
+  #   'name': 
+  # }
   {
-    'match': '^\\s*(?i)\\bFUNCTION\\b'
-    'name': 'storage.type.as-structured-text'
+    comment: 'Single line comment'
+    name: 'comment.line.double-slash.as-structured-test'
+    match: '\\/\\/.*$'
+  }
+  {
+    comment: 'Multi-line comment'
+    name: 'comment.block.as-structured-text'
+    begin: '\\(\\*'
+    end: '\\*\\)'
+  }
+  { # if clauses not supported in this version of Oniguruma for Atom
+    comment: 'Integer and floating point numeric constant'
+    name: 'constant.numeric.as-structured-text'
+    match: '(?<=[^a-zA-Z0-9_.])(\\+|\\-)?[0-9]+(\\.[0-9]+)?'
+  }
+  {
+    comment: 'Keywords for control statements'
+    name: 'keyword.control.as-structured-text'
+    match: '(?i)\\b(IF|THEN|ELSIF|ELSE|FOR|TO|BY|DO|CASE|OF|WHILE|REPEAT|UNTIL|EXIT|RETURN|END_(IF|FOR|CASE|REPEAT|WHILE))\\b'
+  }
+  {
+    comment: 'Keyword and symbolic operators'
+    name: 'keyword.operator.as-structured-text'
+    match: '(?i)(\\b|\\s)(AND|OR|XOR|NOT|MOD|ACCESS|\\:\\=|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*|\\*\\*)(\\b|\\s)'
+  }
+  # {
+  #   comment: 'Function and function block names.'
+  #   name: 'entity.name.function.as-structured-text'
+  #   match: '(?i)(?<=PROGRAM)\\s+[a-zA-Z0-9_]{3,}\\b'
+  # }
+  {
+    comment: 'Keywords specific to Automation Studio'
+    name: 'storage.modifier.as-structured-text'
+    match: '(?i)\\b(_(INIT|CYCLIC|EXIT))\\b'
+  }
+  {
+    comment: 'True and false keywords'
+    name: 'constant.language.as-structured-text'
+    match: '(?i)\\b(TRUE|FALSE)\\b'
+  }
+  {
+    comment: 'Subroutine keywords'
+    name: 'support.function.as-structured-text'
+    match: '(?i)^\\s*(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))\\b'
+  }
+  {
+    comment: 'Data structure declaration keywords'
+    name: 'support.type.as-structured-text'
+    match: '(?i)^\\s*(TYPE|STRUCT|END_(TYPE|STRUCT))\\b'
+  }
+  {
+    comment: 'Variable declaration keywords'
+    name: 'support.variable.as-structured-text'
+    match: '(?i)^\\s*(VAR|VAR_INPUT|VAR_IN_OUT|VAR_OUTPUT|END_VAR)\\b'
+  }
+  {
+    comment: 'IEC 61131 data types'
+    name: 'support.storage.type.as-structured-text'
+    match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY)\\b'
+  }
+  {
+    comment: 'Constant variable type'
+    name: 'support.storage.modifier.as-structured-text'
+    match: '(?i)(?<=VAR)\\s+CONSTANT\\b'
+  }
+  { # need to put case insensitive identifier out front (can use case sensitive group identifier locally)
+    comment: 'Function definition name'
+    match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
+    name: 'entity.name.function.as-structured-text'
   }
 ]
