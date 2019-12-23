@@ -1,2 +1,2 @@
-## 0.0.1 - First Release
+## 0.1.0 - First Release
 * Highlighting for comments, keywords, and constants
