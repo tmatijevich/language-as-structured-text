@@ -10,8 +10,9 @@ patterns: [
   #   'name': 'comment'
   # }
   # {
-  #   'match': 
-  #   'name': 
+  #   comment:  ''
+  #   name:     ''
+  #   match:    ''
   # }
   {
     comment: 'Single line comment'
@@ -23,11 +24,6 @@ patterns: [
     name: 'comment.block.as-structured-text'
     begin: '\\(\\*'
     end: '\\*\\)'
-  }
-  { # if clauses not supported in this version of Oniguruma for Atom
-    comment: 'Integer and floating point numeric constant'
-    name: 'constant.numeric.as-structured-text'
-    match: '(?<=[^a-zA-Z0-9_.])(\\+|\\-)?[0-9]+(\\.[0-9]+)?'
   }
   {
     comment: 'Keywords for control statements'
@@ -75,13 +71,28 @@ patterns: [
     match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY)\\b'
   }
   {
-    comment: 'Constant variable type'
-    name: 'support.storage.modifier.as-structured-text'
-    match: '(?i)(?<=VAR)\\s+CONSTANT\\b'
+    comment:  'Constant variable type'
+    name:     'support.storage.modifier.as-structured-text'
+    match:    '(?i)(?<=VAR)\\s+CONSTANT\\b'
   }
   { # need to put case insensitive identifier out front (can use case sensitive group identifier locally)
     comment: 'Function definition name'
-    match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
     name: 'entity.name.function.as-structured-text'
+    match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
+  }
+  { # if clauses not supported in this version of Oniguruma for Atom
+    comment: 'Integer and floating point numeric constant'
+    name: 'constant.numeric.as-structured-text'
+    match: '(?<=[^a-zA-Z0-9_.])(\\+|\\-)?[0-9]+(\\.[0-9]+)?(?=[^a-zA-Z0-9_.])'
+  }
+  # { # break this up into time, date & time, binary/hex, exponential
+  #   comment:  'Time, hexidecimal, and binary constants'
+  #   name:     '(?i)(T|D|TOD|DT|2|16)\\#[0-9a-f]+(s|ms)'
+  #   match:    ''
+  # }
+  {
+    comment:  'User defined constants (all-caps)'
+    name:     'constant.character.as-structured-text'
+    match:    '\\b[A-Z_0-9]{3,}(?=[^(])\\b'
   }
 ]
