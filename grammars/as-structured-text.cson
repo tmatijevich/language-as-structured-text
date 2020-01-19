@@ -33,7 +33,7 @@ patterns: [
   {
     comment: 'Keyword and symbolic operators'
     name: 'keyword.operator.as-structured-text'
-    match: '(?i)(\\b|\\s)(AND|OR|XOR|NOT|MOD|ACCESS|\\:\\=|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*|\\*\\*)(\\b|\\s)'
+    match: '(?i)(\\b|\\s)(AND|OR|XOR|NOT|MOD|ACCESS|\\:\\=|\\:|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*|\\*\\*)(\\b|\\s)'
   }
   # {
   #   comment: 'Function and function block names.'
@@ -80,6 +80,12 @@ patterns: [
     name: 'entity.name.function.as-structured-text'
     match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
   }
+  {
+    comment: 'Single quoted strings'
+    name: 'string.quoted.single.as-structured-text'
+    begin: "\\'"
+    end: "\\'"
+  }
   { # if clauses not supported in this version of Oniguruma for Atom
     comment: 'Integer and floating point numeric constant'
     name: 'constant.numeric.as-structured-text'
@@ -89,6 +95,16 @@ patterns: [
   #   comment:  'Time, hexidecimal, and binary constants'
   #   name:     '(?i)(T|D|TOD|DT|2|16)\\#[0-9a-f]+(s|ms)'
   #   match:    ''
+  # }
+  {
+    comment: 'Function and function block calls'
+    name: 'entity.name.function.as-structured-text'
+    match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
+  }
+  # {
+  #   comment: 'Top level structures (and function block inputs)'
+  #   name: 'variable.other.member.as-structured-text'
+  #   match: '(?<=[^a-zA-Z0-9_.])[a-zA-Z][a-zA-Z_0-9\\[\\]\\s\\+\\-]+(?=\\.)'
   # }
   {
     comment:  'User defined constants (all-caps)'
