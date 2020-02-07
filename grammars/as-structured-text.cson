@@ -1,19 +1,7 @@
-# If this is your first time writing a language grammar, check out:
-#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
-
 scopeName: 'source.as-structured-text'
 name: 'AS StructuredText'
 fileTypes: [ 'st', 'var', 'typ', 'fun' ]
 patterns: [
-  # {
-  #   'match': '^\\s*@@.*$'
-  #   'name': 'comment'
-  # }
-  # {
-  #   comment:  ''
-  #   name:     ''
-  #   match:    ''
-  # }
   {
     comment: 'Single line comment'
     name: 'comment.line.double-slash.as-structured-test'
@@ -35,11 +23,6 @@ patterns: [
     name: 'keyword.operator.as-structured-text'
     match: '(?i)(\\b|\\s)(AND|OR|XOR|NOT|MOD|ACCESS|\\:\\=|\\:|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*|\\*\\*)(\\b|\\s)'
   }
-  # {
-  #   comment: 'Function and function block names.'
-  #   name: 'entity.name.function.as-structured-text'
-  #   match: '(?i)(?<=PROGRAM)\\s+[a-zA-Z0-9_]{3,}\\b'
-  # }
   {
     comment: 'Keywords specific to Automation Studio'
     name: 'storage.modifier.as-structured-text'
@@ -71,11 +54,16 @@ patterns: [
     match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY)\\b'
   }
   {
-    comment:  'Constant variable type'
-    name:     'support.storage.modifier.as-structured-text'
-    match:    '(?i)(?<=VAR)\\s+CONSTANT\\b'
+    comment: 'Constant variable type'
+    name: 'support.storage.modifier.as-structured-text'
+    match: '(?i)(?<=VAR)\\s+CONSTANT\\b'
   }
-  { # need to put case insensitive identifier out front (can use case sensitive group identifier locally)
+  {
+    comment: 'Dot notation for structures'
+    name: 'keyword.operator.as-structured-text'
+    match: '(?<=[a-zA-Z_0-9\\]])\\.(?=[a-zA-Z_])'
+  }
+  { # Put case insensitivity identifier out front then use the case sensitive identifier later
     comment: 'Function definition name'
     name: 'entity.name.function.as-structured-text'
     match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
@@ -86,10 +74,15 @@ patterns: [
     begin: "\\'"
     end: "\\'"
   }
-  { # if clauses not supported in this version of Oniguruma for Atom
+  { # If clauses are not supported in this distribution of Oniguruma regex for Atom
     comment: 'Integer and floating point numeric constant'
     name: 'constant.numeric.as-structured-text'
-    match: '(?<=[^a-zA-Z0-9_.])(\\+|\\-)?[0-9]+(\\.[0-9]+)?(?=[^a-zA-Z0-9_.])'
+    match: '(?<=[^a-zA-Z0-9_\\.\\#])(\\+|\\-)?[0-9]+(\\.[0-9]+)?(?=[^a-zA-Z0-9_\\.\\#])'
+  }
+  {
+    comment: 'Time constants'
+    name: 'constant.numeric.as-structured-text'
+    match: '(?i)\\bt\\#(\\-)?([0-9]{,10}(d|h|m|s|ms)_?)+\\b'
   }
   # { # break this up into time, date & time, binary/hex, exponential
   #   comment:  'Time, hexidecimal, and binary constants'
@@ -109,6 +102,6 @@ patterns: [
   {
     comment:  'User defined constants (all-caps)'
     name:     'constant.character.as-structured-text'
-    match:    '\\b[A-Z_0-9]{3,}(?=[^(])\\b'
+    match:    '(?<=[^\\.])\\b[A-Z]{1}[A-Z_0-9]{3,}(?=[^(])\\b(?=[^\\.])'
   }
 ]
