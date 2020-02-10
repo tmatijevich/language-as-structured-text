@@ -84,11 +84,11 @@ patterns: [
     name: 'constant.numeric.as-structured-text'
     match: '(?i)\\bt\\#(\\-)?([0-9]{,10}(d|h|m|s|ms)_?)+\\b'
   }
-  # { # break this up into time, date & time, binary/hex, exponential
-  #   comment:  'Time, hexidecimal, and binary constants'
-  #   name:     '(?i)(T|D|TOD|DT|2|16)\\#[0-9a-f]+(s|ms)'
-  #   match:    ''
-  # }
+  {
+    comment: 'Date constants'
+    name: 'constant.numeric.as-structured-text'
+    match: '(?i)\\bd\\#(19|20|21)\\d{2}\\-[0-1]?\\d\\-\\d{1,2}\\b'
+  }
   {
     comment: 'Function and function block calls'
     name: 'entity.name.function.as-structured-text'
