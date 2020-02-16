@@ -1,6 +1,6 @@
 scopeName: 'source.as-structured-text'
 name: 'AS StructuredText'
-fileTypes: [ 'st', 'var', 'typ', 'fun' ]
+fileTypes: [ 'st', 'var', 'typ', 'fun', 'per', 'iom', 'vvm' ]
 patterns: [
   {
     comment: 'Single line comment'
@@ -46,7 +46,7 @@ patterns: [
   {
     comment: 'Variable declaration keywords'
     name: 'support.variable.as-structured-text'
-    match: '(?i)^\\s*(VAR|VAR_INPUT|VAR_IN_OUT|VAR_OUTPUT|END_VAR)\\b'
+    match: '(?i)^\\s*(VAR|VAR_INPUT|VAR_IN_OUT|VAR_OUTPUT|VAR_CONFIG|END_VAR)\\b'
   }
   {
     comment: 'IEC 61131 data types'
@@ -94,6 +94,19 @@ patterns: [
     name: 'entity.name.function.as-structured-text'
     match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
   }
+  {
+      comment: 'Function block array element call'
+      match: '''(?x) # Free space mode
+      # Function block instance name required, group  1
+      ([a-zA-Z][a-zA-Z_0-9]+)
+      # Indexed once or none greedy, group 2
+      (\\[[a-zA-Z][a-zA-Z_0-9]+\\])
+      # Lookahead for open parenthesis
+      (?=\\()
+      '''
+      captures: 
+        1: name: 'entity.name.function.as-structured-text'
+  }
   # {
   #   comment: 'Top level structures (and function block inputs)'
   #   name: 'variable.other.member.as-structured-text'
@@ -103,5 +116,10 @@ patterns: [
     comment:  'User defined constants (all-caps)'
     name:     'constant.character.as-structured-text'
     match:    '(?<=[^\\.])\\b[A-Z]{1}[A-Z_0-9]{3,}(?=[^(])\\b(?=[^\\.])'
+  }
+  {
+      comment: 'Global variables -- meta style'
+      name: 'meta.bold.as-structured-text'
+      match: '\\bg[A-Z_0-9][a-zA-Z_0-9]*\\b'
   }
 ]
