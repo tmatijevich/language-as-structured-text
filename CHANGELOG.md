@@ -1,3 +1,6 @@
+## v0.1.2
+* Update README with examples and list supported features
+
 ## v0.1.1 
 * Minor highlighting updates
 * Highlighting support
