@@ -1,14 +1,35 @@
-# AS StructuredText Language Package for [Atom](atom.io)
+# AS StructuredText Language Package for [Atom](https://atom.io)
+
+[![Version](https://img.shields.io/apm/v/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text) [![Downloads](https://img.shields.io/apm/dm/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text) [![License](https://img.shields.io/apm/l/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text)
 
 Atom support for IEC 61131-3 Structured Text and Automation Studio projects including syntax highlighting, snippets, and auto-completion.
 
 
-#### Highlighting Example
-<img src="./media/highlighting example 2020-02-15_23-59-31.png" alt="Highlighting example screenshot" style="margin-left:auto; margin-right:auto; display:block; width:850px; height:692px">
+### Highlighting Example 
+![Highlighting example screenshot](./media/highlighting%20example%202020-02-15_23-59-31.png)
 
 
-#### Code Snippet Example
-<img src="./media/grammer%20example%202020-01-19_14-44-16.gif" alt="Highlighting example screenshot" style="margin-left:auto; margin-right:auto; display:block; width:784px; height:510px">
+### Code Snippet Example
+![Grammer Example](./media/grammer%20example%202020-01-19_14-44-16.gif)
 
 
-<!-- ![Grammer Example](./media/grammer%20example%202020-01-19_14-44-16.gif) -->
+## Key Features
+* Syntax highlighting
+	* Control keywords
+	* Function, program, and action keywords
+	* Variable and type declaration
+	* Data types
+	* String constants
+	* Floating point and integer constants
+	* Time, date, time of day, and date & time constants
+	* Function and function block calls
+	* User defined constants (all caps)
+	* Global variables ("g" prefix lower camel case, bold)
+* Snippets
+	* `cm`	
+
+```
+(*
+
+*)
+```
