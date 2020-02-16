@@ -118,8 +118,8 @@ patterns: [
     match:    '(?<=[^\\.])\\b[A-Z]{1}[A-Z_0-9]{3,}(?=[^(])\\b(?=[^\\.])'
   }
   {
-      comment: 'Global variables -- meta style'
-      name: 'meta.bold.as-structured-text'
-      match: '\\bg[A-Z_0-9][a-zA-Z_0-9]*\\b'
+    comment: 'Global variables -- meta style'
+    name: 'meta.bold.as-structured-text'
+    match: '\\bg[A-Z_0-9][a-zA-Z_0-9]*\\b'
   }
 ]
