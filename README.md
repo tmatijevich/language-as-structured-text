@@ -43,5 +43,6 @@ Atom support for IEC 61131-3 Structured Text and Automation Studio projects incl
 	<tr>
 		<td><code>else</code></td>
 		<td><pre>IF $condition THEN<br>	$statement;<br>ELSE<br>	$statment;<br>END_IF</pre></td>
+		<td><pre>IF $condition THEN<br>$statement;<br>END_IF</pre></td>
 	</tr>
 </table>
