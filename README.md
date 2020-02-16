@@ -37,3 +37,19 @@ Atom support for IEC 61131-3 Structured Text and Automation Studio projects incl
 	* `prog` - Program definition
 	* `while` - While loop
 	* `repeat` - Repeat loop
+* Auto-completion
+	* Automatically set ALL CAPS for keywords
+	
+
+## Recommended add-on packages
+Here are packages I recommend for programming in Atom with any language
+* [minimap](https://atom.io/packages/minimap)
+* [minimap-find-and-replace](https://atom.io/packages/minimap-find-and-replace)
+* [multi-cursor](https://atom.io/packages/multi-cursor)
+* [sort-lines](https://atom.io/packages/sort-lines)
+* [split-diff](https://atom.io/packages/split-diff)
+* [tabs-to-spaces](https://atom.io/packages/tabs-to-spaces)
+
+
+## Upcoming Features
+* Declared variable, structure member, and library auto-complete provider

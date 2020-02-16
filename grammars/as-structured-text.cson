@@ -15,48 +15,80 @@ patterns: [
   }
   {
     comment: 'Keywords for control statements'
-    name: 'keyword.control.as-structured-text'
-    match: '(?i)\\b(IF|THEN|ELSIF|ELSE|FOR|TO|BY|DO|CASE|OF|WHILE|REPEAT|UNTIL|EXIT|RETURN|END_(IF|FOR|CASE|REPEAT|WHILE))\\b'
+    match: '(?i)(?<=\\s)(IF|THEN|ELSIF|ELSE|FOR|TO|BY|DO|CASE|OF|WHILE|REPEAT|UNTIL|EXIT|RETURN|END_(IF|FOR|CASE|REPEAT|WHILE))(?=(\\s|\\;))'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'keyword.control.as-structured-text'
+    }
   }
   {
-    comment: 'Keyword and symbolic operators'
+    comment: 'Keyword operators'
+    match: '(?i)(?<=[\\s\\(])(AND|OR|XOR|NOT|MOD|ACCESS)(?=\\s)'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'keyword.operator.as-structured-text'
+    }
+  }
+  {
+    comment: 'Symbolic operators'
     name: 'keyword.operator.as-structured-text'
-    match: '(?i)(\\b|\\s)(AND|OR|XOR|NOT|MOD|ACCESS|\\:\\=|\\:|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*|\\*\\*)(\\b|\\s)'
+    match: '(\\:\\=|\\:|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*)'
   }
   {
     comment: 'Keywords specific to Automation Studio'
-    name: 'storage.modifier.as-structured-text'
-    match: '(?i)\\b(_(INIT|CYCLIC|EXIT))\\b'
+    match: '(?i)(?<=\\s)(_(INIT|CYCLIC|EXIT))(?=\\s)'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'storage.modifier.as-structured-text'
+    }
   }
   {
     comment: 'True and false keywords'
-    name: 'constant.language.as-structured-text'
-    match: '(?i)\\b(TRUE|FALSE)\\b'
+    match: '(?i)(?<=\\s)(TRUE|FALSE)(?=[\\s\\;\\)])'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'constant.language.as-structured-text'
+    }
   }
   {
     comment: 'Subroutine keywords'
-    name: 'support.function.as-structured-text'
     match: '(?i)^\\s*(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))\\b'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'support.function.as-structured-text'
+    }
   }
   {
     comment: 'Data structure declaration keywords'
-    name: 'support.type.as-structured-text'
     match: '(?i)^\\s*(TYPE|STRUCT|END_(TYPE|STRUCT))\\b'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'support.type.as-structured-text'
+    }
   }
   {
     comment: 'Variable declaration keywords'
-    name: 'support.variable.as-structured-text'
     match: '(?i)^\\s*(VAR|VAR_INPUT|VAR_IN_OUT|VAR_OUTPUT|VAR_CONFIG|END_VAR)\\b'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'support.variable.as-structured-text'
+    }
   }
   {
     comment: 'IEC 61131 data types'
-    name: 'support.storage.type.as-structured-text'
     match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY)\\b'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'support.storage.type.as-structured-text'
+    }
   }
   {
     comment: 'Constant variable type'
-    name: 'support.storage.modifier.as-structured-text'
-    match: '(?i)(?<=VAR)\\s+CONSTANT\\b'
+    match: '(?i)(?<=VAR)\\s+(CONSTANT)\\b'
+    captures: {
+      0: name: 'meta.customkeyword.as-structured-text'
+      1: name: 'support.storage.modifier.as-structured-text'
+    }
   }
   {
     comment: 'Dot notation for structures'

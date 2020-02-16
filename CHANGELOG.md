@@ -1,3 +1,6 @@
+## v0.2.0
+* Newly implemented auto-uppercase styling for keywords
+
 ## v0.1.2
 * Update README with examples and list supported features
 
