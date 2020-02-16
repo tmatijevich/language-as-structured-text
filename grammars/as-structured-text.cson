@@ -100,14 +100,23 @@ patterns: [
     # Possible decimal precision for the seconds values
     (\\.\\d{1,3})?
     # Closing
-    (\\s|\\;)
+    (\\s|\\;|\\))
     '''
   }
-  # {
-  #   comment: 'Date and time constants, DT#1970-01-01-00:00:00 ... DT#2106-02-07-06:28:15'
-  #   name: 'constant.character.as-structured-text'
-  #   match: ''
-  # }
+  {
+    comment: 'Date and time constants, DT#1970-01-01-00:00:00 ... DT#2106-02-07-06:28:15'
+    name: 'constant.character.as-structured-text'
+    match: '''(?x)(?i) # Free space mode and case insensitive
+    # Bounbary and identifier
+    \\b DT \\#
+    # Date year - month - day. If you have just a "1" it will be greedy
+    (19|20|21)\\d{2} \\- (\\d{1,2} \\-){2}
+    # Time hour : minute : second
+    [0-2]?\\d (\\:[0-5]?\\d){2}
+    # Closing
+    (\\s|\\;|\\))
+    '''
+  }
   {
     comment: 'Function and function block calls'
     name: 'entity.name.function.as-structured-text'
