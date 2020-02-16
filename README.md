@@ -27,7 +27,7 @@ Atom support for IEC 61131-3 Structured Text and Automation Studio projects incl
 	* Global variables ("g" prefix lower camel case, bold)
 * Snippets
 
-<table>
+<table width="100%">
 	<tr>
 		<th>Type</th>
 		<th>Output</th>
@@ -35,5 +35,13 @@ Atom support for IEC 61131-3 Structured Text and Automation Studio projects incl
 	<tr>
 		<td><code>cm</code></td>
 		<td><pre>(&#42;<br><br>&#42;)</pre></td>
+	</tr>
+	<tr>
+		<td><code>if</code></td>
+		<td><pre>IF $condition THEN<br>	$statement;<br>END_IF</pre></td>
+	</tr>
+	<tr>
+		<td><code>else</code></td>
+		<td><pre>IF $condition THEN<br>	$statement;<br>ELSE<br>	$statment;<br>END_IF</pre></td>
 	</tr>
 </table>
