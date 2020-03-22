@@ -14,12 +14,67 @@ patterns: [
     end: '\\*\\)'
   }
   {
-    comment: 'Keywords for control statements'
-    match: '(?i)(?<=\\s)(IF|THEN|ELSIF|ELSE|FOR|TO|BY|DO|CASE|OF|WHILE|REPEAT|UNTIL|EXIT|RETURN|END_(IF|FOR|CASE|REPEAT|WHILE))(?=(\\s|\\;))'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'keyword.control.as-structured-text'
-    }
+    comment: 'Keywords at beginning of control statement'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i) # Free space mode, case insensitive
+    # Match before (but don't capture)
+    (^|\\s|;)
+    # Keyword character match
+    (IF|FOR|CASE|WHILE|REPEAT|UNTIL)
+    # Match after (but don't capture)
+    (\\s|$|\\()
+    '''
+  }
+  {
+    comment: 'Conditional support keywords'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i)
+    (\\s|^|\\))
+    (TO|BY)
+    (\\s|$|\\()
+    '''
+  }
+  {
+    comment: 'Keywords at end of condition'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i)
+    (\\s|^|\\))
+    (THEN|DO|OF)
+    (\\s|$)
+    '''
+  }
+  {
+    comment: 'Keywords with implicit condition'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i)
+    (\\s|^|;)
+    (ELSE|ELSIF)
+    (\\s|$)
+    '''
+  }
+  {
+    comment: 'Keywords at end of control statement'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i)
+    (\\s|^|;)
+    (END_(IF|FOR|CASE|WHILE|REPEAT))
+    (\\s|$|;)
+    '''
+  }
+  {
+    comment: 'Self statement keyword'
+    captures: 
+      2: name: 'keyword.control.as-structured-text'
+    match: '''(?x)(?i)
+    (?<=[\\s])
+    (EXIT|RETURN)
+    (?=[\\s$;])
+    '''
   }
   {
     comment: 'Keyword operators'
