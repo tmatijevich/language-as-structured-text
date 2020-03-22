@@ -21,9 +21,9 @@ patterns: [
     # Match before (but don't capture)
     (^|\\s|;)
     # Keyword character match
-    (IF|FOR|CASE|WHILE|REPEAT|UNTIL)
-    # Match after (but don't capture)
-    (\\s|$|\\()
+    (IF|ELSIF|FOR|CASE|WHILE|UNTIL)
+    # Lookahead
+    (?=[\\s\\(])
     '''
   }
   {
@@ -33,7 +33,7 @@ patterns: [
     match: '''(?x)(?i)
     (\\s|^|\\))
     (TO|BY)
-    (\\s|$|\\()
+    (?=[\\s\\(])
     '''
   }
   {
@@ -43,7 +43,7 @@ patterns: [
     match: '''(?x)(?i)
     (\\s|^|\\))
     (THEN|DO|OF)
-    (\\s|$)
+    (?=\\s)
     '''
   }
   {
@@ -52,8 +52,8 @@ patterns: [
       2: name: 'keyword.control.as-structured-text'
     match: '''(?x)(?i)
     (\\s|^|;)
-    (ELSE|ELSIF)
-    (\\s|$)
+    (ELSE|REPEAT)
+    (?=\\s)
     '''
   }
   {
@@ -63,17 +63,17 @@ patterns: [
     match: '''(?x)(?i)
     (\\s|^|;)
     (END_(IF|FOR|CASE|WHILE|REPEAT))
-    (\\s|$|;)
+    (?=[\\s;])
     '''
   }
   {
     comment: 'Self statement keyword'
-    captures: 
+    captures:
       2: name: 'keyword.control.as-structured-text'
     match: '''(?x)(?i)
-    (?<=[\\s])
+    (\\s|^|;)
     (EXIT|RETURN)
-    (?=[\\s$;])
+    (?=[\\s;])
     '''
   }
   {
