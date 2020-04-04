@@ -78,11 +78,15 @@ patterns: [
   }
   {
     comment: 'Keyword operators'
-    match: '(?i)(?<=[\\s\\(])(AND|OR|XOR|NOT|MOD|ACCESS)(?=\\s)'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'keyword.operator.as-structured-text'
-    }
+    captures: 
+      2: name: 'keyword.operator.as-structured-text'
+    match: '(?i)(^|\\s)(AND|OR|XOR|MOD|ACCESS)(?=\\s)'
+  }
+  {
+    comment: 'Not keyword operator'
+    captures: 
+      2: name: 'keyword.operator.as-structured-text'
+    match: '(?i)(^|\\s|\\()(NOT)(?=\\s)'
   }
   {
     comment: 'Symbolic operators'
@@ -90,20 +94,19 @@ patterns: [
     match: '(\\:\\=|\\:|\\=|\\<\\>|\\>|\\<|\\>=|\\<=|\\+|\\-|\\/|\\*)'
   }
   {
-    comment: 'Keywords specific to Automation Studio'
-    match: '(?i)(?<=\\s)(_(INIT|CYCLIC|EXIT))(?=\\s)'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'storage.modifier.as-structured-text'
-    }
+    comment: 'Dot notation for structures'
+    name: 'keyword.operator.as-structured-text'
+    match: '(?<=[a-zA-Z_0-9\\]])\\.(?=[a-zA-Z_])'
   }
   {
     comment: 'True and false keywords'
-    match: '(?i)(?<=\\s)(TRUE|FALSE)(?=[\\s\\;\\)])'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'constant.language.as-structured-text'
-    }
+    name: 'constant.language.as-structured-text'
+    match: '(?i)(^|\\s|\\(|=)(TRUE|FALSE)(?=[\\s\\;\\)])'
+  }
+  {
+    comment: 'Keywords specific to Automation Studio'
+    name: 'storage.modifier.as-structured-text'
+    match: '(?i)(?<=\\s)(_(INIT|CYCLIC|EXIT))(?=\\s)'
   }
   {
     comment: 'Subroutine keywords'
@@ -144,11 +147,6 @@ patterns: [
       0: name: 'meta.customkeyword.as-structured-text'
       1: name: 'support.storage.modifier.as-structured-text'
     }
-  }
-  {
-    comment: 'Dot notation for structures'
-    name: 'keyword.operator.as-structured-text'
-    match: '(?<=[a-zA-Z_0-9\\]])\\.(?=[a-zA-Z_])'
   }
   { # Put case insensitivity identifier out front then use the case sensitive identifier later
     comment: 'Function definition name'
