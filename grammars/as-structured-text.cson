@@ -144,11 +144,9 @@ patterns: [
   }
   {
     comment: 'Constant variable type'
+    captures:
+      1: name: 'support.storage.type.as-structured-text'
     match: '(?i)(?<=VAR)\\s+(CONSTANT)\\b'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'support.storage.modifier.as-structured-text'
-    }
   }
   { # Put case insensitivity identifier out front then use the case sensitive identifier later
     comment: 'Function definition name'
@@ -165,6 +163,11 @@ patterns: [
     comment: 'Integer and floating point numeric constant'
     name: 'constant.numeric.as-structured-text'
     match: '(?<=[^a-zA-Z0-9_\\.\\#])(\\+|\\-)?[0-9]+(\\.[0-9]+)?(?=[^a-zA-Z0-9_\\.\\#])'
+  }
+  {
+    comment: 'Structure/type member'
+    name: 'variable.other.member.as-structured-text'
+    match: '(?i)(?<=(\\w|\\])\\.)[a-z][a-z_0-9]*\\b'
   }
   {
     comment: 'Time constants'
