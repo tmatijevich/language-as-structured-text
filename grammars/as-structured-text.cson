@@ -105,40 +105,42 @@ patterns: [
   }
   {
     comment: 'Keywords specific to Automation Studio'
-    name: 'storage.modifier.as-structured-text'
+    name: 'support.storage.type.as-structured-text'
     match: '(?i)(?<=\\s)(_(INIT|CYCLIC|EXIT))(?=\\s)'
   }
   {
-    comment: 'Subroutine keywords'
-    match: '(?i)^\\s*(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))\\b'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'support.function.as-structured-text'
-    }
-  }
-  {
-    comment: 'Data structure declaration keywords'
-    match: '(?i)^\\s*(TYPE|STRUCT|END_(TYPE|STRUCT))\\b'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'support.type.as-structured-text'
-    }
+    comment: 'Function/program keywords'
+    captures:
+      1: name: 'support.storage.type.as-structured-text'
+      2: name: 'storage.type.function.as-structured-text'
+    match: '''(?x)(?i)
+      ^ \\s* ({[A-Z_]+})? \\s*
+      (FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))
+      \\b
+      '''
   }
   {
     comment: 'Variable declaration keywords'
+    captures: 
+      1: name: 'storage.type.var.as-structured-text'
     match: '(?i)^\\s*(VAR|VAR_INPUT|VAR_IN_OUT|VAR_OUTPUT|VAR_CONFIG|END_VAR)\\b'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'support.variable.as-structured-text'
-    }
+  }
+  {
+    comment: 'Data structure declaration keywords'
+    captures:
+      2: name: 'support.storage.type.as-structured-text'
+      3: name: 'keyword.operator.as-structured-text'
+      4: name: 'storage.type.class.as-structured-text'
+    match: '''(?x)(?i)
+      ^ \\s* (([a-z][a-z_0-9]+) \\s* (:))? \\s*
+      (TYPE|STRUCT|END_(TYPE|STRUCT))
+      \\b
+      '''
   }
   {
     comment: 'IEC 61131 data types'
-    match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY)\\b'
-    captures: {
-      0: name: 'meta.customkeyword.as-structured-text'
-      1: name: 'support.storage.type.as-structured-text'
-    }
+    name: 'support.storage.type.as-structured-text'
+    match: '(?i)\\b(BOOL|BYTE|D?WORD|U?SINT|U?INT|U?DINT|L?REAL|W?STRING|TIME|DATE_AND_TIME|DATE|TIME_OF_DAY|ARRAY)\\b'
   }
   {
     comment: 'Constant variable type'
