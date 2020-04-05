@@ -118,7 +118,7 @@ patterns: [
     match: '''(?x)(?i)
       ^ \\s* ({[A-Z_]+})? \\s*
       (FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(?:FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))
-      \\b \\s* (([a-z][a-z_0-9]+) \\s* (:))?
+      \\b \\s* (([a-z][a-z_0-9]+) \\s* (:)?)?
       '''
   }
   {

@@ -19,41 +19,44 @@ ATOM support for IEC 61131-3 Structured Text and Automation Studio (AS) projects
 * Structure members `System.Parameters`
 * User constants `IN_TO_MM` (all uppercase)
 
-### Highlighting Example 
-![Highlighting example screenshot](./media/highlighting%20example%202020-02-15_23-59-31.png)
+![Highlighting example](./media/highlighting%20example%202020-04-05_16-57-26.png)
 
+#### Snippets
+* `cm` - Block comment
+* `if` - If statement
+* `else` - If else statement
+* `elsif` - If, else, elsif statement
+* `for` - For loop
+* `case` - Case statement
+* `while` - While loop
+* `repeat` - Repeat loop
+* `fn` - Function definition
+* `fb` - Function block definition
+* `prog` - Program definition
 
-### Code Snippet Example
-![Grammer Example](./media/grammer%20example%202020-01-19_14-44-16.gif)
+#### Auto-Complete
+* Auto-capitalization
+	* Sets keywords to all caps when cursor changes line in text editor
 
+![Auto-capitalization example](./media/auto-capitalization%20example%202020-04-05_17-19-56.gif)
 
-## Key Features
-* Syntax highlighting
-	* Control keywords
-	* Function, program, and action keywords
-	* Variable and type declaration
-	* Data types
-	* String constants
-	* Floating point and integer constants
-	* Time, date, time of day, and date & time constants
-	* Function and function block calls
-	* User defined constants (all caps)
-	* Global variables ("g" prefix lower camel case, bold)
-* Snippets
-	* `cm` - Block comment
-	* `if` - If statement
-	* `else` - If else statement
-	* `elsif` - If, else, elsif statement
-	* `for` - For loop
-	* `case` - Case statement
-	* `fn` - Function definition
-	* `fb` - Function block definition
-	* `prog` - Program definition
-	* `while` - While loop
-	* `repeat` - Repeat loop
-* Auto-completion
-	* Automatically set ALL CAPS for keywords
-	
+## Installation
+Install the latest release,
+```
+apm install language-as-structured-text
+```
+or clone the repository for the latest changes.
+```
+git clone https://github.com/tmatijevich/language-as-structured-text.git
+```
+Link as a development package with ATOM to make custom changes.
+```
+apm link -d
+```
+Then run ATOM in development mode.
+```
+atom -d
+```
 
 ## Plugins
 I recommend the following add-on packages for programming in ATOM
