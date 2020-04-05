@@ -151,25 +151,15 @@ patterns: [
     match: '(?i)(?<=VAR)\\s+(CONSTANT)\\b'
   }
   {
-    comment: 'Function and function block calls'
-    name: 'entity.name.function.as-structured-text'
-    match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
-  }
-  {
     comment: 'Single quoted strings'
     name: 'string.quoted.single.as-structured-text'
     begin: "\\'"
     end: "\\'"
   }
-  { # If clauses are not supported in this distribution of Oniguruma regex for Atom
+  {
     comment: 'Integer and floating point numeric constant'
     name: 'constant.numeric.as-structured-text'
     match: '(?<=[^a-zA-Z0-9_\\.\\#])(\\+|\\-)?[0-9]+(\\.[0-9]+)?(?=[^a-zA-Z0-9_\\.\\#])'
-  }
-  {
-    comment: 'Structure/type member'
-    name: 'variable.other.member.as-structured-text'
-    match: '(?i)(?<=(\\w|\\])\\.)[a-z][a-z_0-9]*\\b'
   }
   {
     comment: 'Time constants'
@@ -210,6 +200,11 @@ patterns: [
     '''
   }
   {
+    comment: 'Function and function block calls'
+    name: 'entity.name.function.as-structured-text'
+    match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
+  }
+  {
     comment: 'Function block array element call'
     match: '''(?x) # Free space mode
     # Function block instance name required, group  1
@@ -221,12 +216,12 @@ patterns: [
     '''
     captures: 
       1: name: 'entity.name.function.as-structured-text'
+    }
+  {
+    comment: 'Structure/type member'
+    name: 'variable.other.member.as-structured-text'
+    match: '(?i)(?<=(\\w|\\])\\.)[a-z][a-z_0-9]*\\b'
   }
-  # {
-  #   comment: 'Top level structures (and function block inputs)'
-  #   name: 'variable.other.member.as-structured-text'
-  #   match: '(?<=[^a-zA-Z0-9_.])[a-zA-Z][a-zA-Z_0-9\\[\\]\\s\\+\\-]+(?=\\.)'
-  # }
   {
     comment:  'User defined constants (all-caps)'
     name:     'constant.character.as-structured-text'
