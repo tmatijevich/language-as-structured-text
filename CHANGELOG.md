@@ -1,3 +1,10 @@
+## v0.2.1 (2020-04-05)
+* Bugfix [Auto-capitalization failure](https://github.com/tmatijevich/language-as-structured-text/issues/2)
+* Bugfix [Conditional keyword match word boundary](https://github.com/tmatijevich/language-as-structured-text/issues/1)
+* Remove CSS uppercasing in favor of JavaScript text replacement
+* Improve keyword match scope names
+* Add structure member highlighting
+
 ## v0.2.0
 * Newly implemented auto-uppercase styling for keywords
 
