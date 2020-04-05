@@ -1,9 +1,23 @@
-# AS StructuredText Language Package for [Atom](https://atom.io)
+# StructuredText Language Package for [ATOM](https://atom.io)
 
-[![Version](https://img.shields.io/apm/v/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text) [![Downloads](https://img.shields.io/apm/dm/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text) [![License](https://img.shields.io/apm/l/language-as-structured-text.svg?style=flat-square)](https://atom.io/packages/language-as-structured-text)
+[![Version](https://img.shields.io/apm/v/language-as-structured-text?color=blue)](https://github.com/tmatijevich/language-as-structured-text/blob/master/CHANGELOG.md)
+[![Downloads](https://img.shields.io/apm/dm/language-as-structured-text?color=brightgreen)](https://atom.io/packages/language-as-structured-text) 
+[![License](https://img.shields.io/apm/l/language-as-structured-text?color=blue)](https://github.com/tmatijevich/language-as-structured-text/blob/master/LICENSE.md)
 
-Atom support for IEC 61131-3 Structured Text and Automation Studio projects including syntax highlighting, snippets, and auto-completion.
+ATOM support for IEC 61131-3 Structured Text and Automation Studio (AS) projects including syntax highlighting, snippets, and auto-completion.
 
+## Features
+#### Syntax Highlighting
+* Comments (inline `//`, block `(* *)`)
+* Keywords
+	* Statement-flow (`IF`, `ELSE`, `CASE`, `FOR`, ...)
+	* Operators (`AND`, `OR`, `<`, `>`, `+`, `-`, ...)
+	* Storage (`PROGRAM`, `FUNCTION`, `VAR`, `TYPE`, ...)
+* Strings ` 'Hello Word!' `
+* Numbers `16#ff`, `75.0`, `T#250ms`
+* Function & Function Block calls `strcpy()`
+* Structure members `System.Parameters`
+* User constants `IN_TO_MM` (all uppercase)
 
 ### Highlighting Example 
 ![Highlighting example screenshot](./media/highlighting%20example%202020-02-15_23-59-31.png)
@@ -41,15 +55,17 @@ Atom support for IEC 61131-3 Structured Text and Automation Studio projects incl
 	* Automatically set ALL CAPS for keywords
 	
 
-## Recommended add-on packages
-Here are packages I recommend for programming in Atom with any language
+## Plugins
+I recommend the following add-on packages for programming in ATOM
+* [highlight-selected](https://atom.io/packages/highlight-selected)
 * [minimap](https://atom.io/packages/minimap)
-* [minimap-find-and-replace](https://atom.io/packages/minimap-find-and-replace)
+	* [minimap-find-and-replace](https://atom.io/packages/minimap-find-and-replace)
+	* [minimap-hightlight-selected](https://atom.io/packages/minimap-highlight-selected)
 * [multi-cursor](https://atom.io/packages/multi-cursor)
 * [sort-lines](https://atom.io/packages/sort-lines)
 * [split-diff](https://atom.io/packages/split-diff)
 * [tabs-to-spaces](https://atom.io/packages/tabs-to-spaces)
 
 
-## Upcoming Features
-* Declared variable, structure member, and library auto-complete provider
+## Upcoming
+* Autocomplete provider of variables, types, and functions
