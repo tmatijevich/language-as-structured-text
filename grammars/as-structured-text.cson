@@ -113,10 +113,12 @@ patterns: [
     captures:
       1: name: 'support.storage.type.as-structured-text'
       2: name: 'storage.type.function.as-structured-text'
+      4: name: 'entity.name.function.as-structured-text'
+      5: name: 'keyword.operator.as-structured-text'
     match: '''(?x)(?i)
       ^ \\s* ({[A-Z_]+})? \\s*
-      (FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))
-      \\b
+      (FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION|END_(?:FUNCTION|FUNCTION_BLOCK|PROGRAM|ACTION))
+      \\b \\s* (([a-z][a-z_0-9]+) \\s* (:))?
       '''
   }
   {
@@ -148,10 +150,10 @@ patterns: [
       1: name: 'support.storage.type.as-structured-text'
     match: '(?i)(?<=VAR)\\s+(CONSTANT)\\b'
   }
-  { # Put case insensitivity identifier out front then use the case sensitive identifier later
-    comment: 'Function definition name'
+  {
+    comment: 'Function and function block calls'
     name: 'entity.name.function.as-structured-text'
-    match: '(?i)((?<=FUNCTION)|(?<=FUNCTION_BLOCK))(?-i)\\s+\\w+\\b'
+    match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
   }
   {
     comment: 'Single quoted strings'
@@ -206,11 +208,6 @@ patterns: [
     # Closing
     (\\s|\\;|\\))
     '''
-  }
-  {
-    comment: 'Function and function block calls'
-    name: 'entity.name.function.as-structured-text'
-    match: '[a-zA-Z][a-zA-Z_0-9]+(?=\\()'
   }
   {
     comment: 'Function block array element call'
