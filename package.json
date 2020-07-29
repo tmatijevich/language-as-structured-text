@@ -14,5 +14,12 @@
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "configSchema": {
+    "autoCompleteUppercaseKeywords": {
+      "description": "Automatically uppercase all keywords on the previous line after a cursor line-change performed by Enter key, arrow keys, or mouse click. **Requires restart.**",
+      "type": "boolean",
+      "default": true
+    }
   }
 }
