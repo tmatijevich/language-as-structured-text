@@ -1,0 +1,39 @@
+name: 'Structured Text'
+scopeName: 'source.st'
+type: 'tree-sitter'
+parser: 'tree-sitter-structured-text'
+fileTypes: [ 'st', 'var', 'typ', 'fun', 'per', 'iom', 'vvm' ]
+scopes: 
+  'inline_comment': 'comment.line.double-slash'
+  'block_comment': 'comment.block'
+  
+  '''
+  "PROGRAM",
+  "END_PROGRAM"
+  ''': 'keyword.control'
+  
+  'program_definition > identifier': 'entity.name.function'
+  
+  'number': 'constant.numeric'
+  
+  '"."': 'keyword.operator.member'
+  
+  '''
+  "**",
+  "*",
+  "/",
+  "+",
+  "-",
+  "<",
+  ">",
+  "<=",
+  ">=",
+  "=",
+  "<>",
+  "AND",
+  "XOR",
+  "OR",
+  ":="
+  ''': 'keyword.operator'
+  
+  '";"': 'punctuation.terminator.statement'

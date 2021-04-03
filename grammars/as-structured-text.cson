@@ -1,5 +1,0 @@
-name: 'AS StructuredText'
-scopeName: 'as-structured-text'
-type: 'tree-sitter'
-parser: 'tree-sitter-structured-text'
-fileTypes: [ 'st', 'var', 'typ', 'fun', 'per', 'iom', 'vvm' ]

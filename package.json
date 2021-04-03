@@ -12,6 +12,9 @@
   ],
   "repository": "https://github.com/tmatijevich/language-as-structured-text",
   "license": "MIT",
+  "dependencies": {
+    "tree-sitter-structured-text": "file:../tree-sitter-structured-text"
+  },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
