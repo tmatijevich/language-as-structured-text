@@ -8,20 +8,53 @@ scopes:
   'block_comment': 'comment.block'
   
   '''
-  "PROGRAM",
-  "END_PROGRAM"
-  ''': 'keyword.control'
+  program_definition > identifier,
+  action_definition > identifier
+  ''': 'entity.name.function'
   
-  'program_definition > identifier': 'entity.name.function'
+  'call_expression > identifier': 'entity.name.function'
+  
+  'structure_member > identifier': 'variable.other.member'
   
   'number': 'constant.numeric'
   
+  'string': 'string.quoted.single'
+  
   '"."': 'keyword.operator.member'
   
+  'identifier': {match: '(TRUE|FALSE)', scopes: 'constant.language'}
+  
   '''
+  "PROGRAM",
+  "END_PROGRAM",
+  "ACTION",
+  "END_ACTION"
+  ''': 'storage.type.function'
+  
+  '''
+  "IF",
+  "THEN",
+  "ELSIF",
+  "ELSE",
+  "END_IF",
+  "CASE",
+  "OF",
+  "END_CASE",
+  "FOR",
+  "TO",
+  "BY",
+  "DO",
+  "END_FOR",
+  "EXIT",
+  "RETURN"
+  ''': 'keyword.control'
+  
+  '''
+  "NOT",
   "**",
   "*",
   "/",
+  "MOD",
   "+",
   "-",
   "<",
