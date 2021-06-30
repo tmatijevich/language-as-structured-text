@@ -17,9 +17,9 @@
   },
   "configSchema": {
     "autoCompleteUppercaseKeywords": {
-      "description": "Automatically uppercase all keywords on the previous line after a cursor line-change performed by Enter key, arrow keys, or mouse click. **Requires restart.**",
+      "description": "Automatically uppercase all characters in keywords. Applies to the previous line after a line-change by Enter, arrow keys, or mouse click. **Experimental, requires restart.**",
       "type": "boolean",
-      "default": true
+      "default": false
     }
   }
 }
