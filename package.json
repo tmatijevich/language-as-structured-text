@@ -1,7 +1,7 @@
 {
   "name": "language-as-structured-text",
   "main": "./lib/as-structured-text",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Atom support for IEC 61131-3 Structured Text and Automation Studio projects",
   "keywords": [
     "language",
