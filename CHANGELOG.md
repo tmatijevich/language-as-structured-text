@@ -1,5 +1,10 @@
 # language-as-structured-text Changes
 
+## v0.2.3 (2021-06-29)
+- Include setting to turn on automatic uppercasing keywords
+- Remove all styling and meta scopes
+- Fix constant scope
+
 ## v0.2.2 (2020-04-05)
 * Update readme with new examples
 * Minor highlighting and autocompletion fixes

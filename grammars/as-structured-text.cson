@@ -224,7 +224,7 @@ patterns: [
   }
   {
     comment:  'User defined constants (all-caps)'
-    name:     'constant.language.boolean.as-structured-text'
+    name:     'constant.other.as-structured-text'
     match:    '(?<=[^\\.])\\b[A-Z]{1}[A-Z_0-9]{2,}(?=[^(])\\b(?=[^\\.])'
   }
 ]
